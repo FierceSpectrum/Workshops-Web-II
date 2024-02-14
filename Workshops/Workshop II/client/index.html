@@ -92,14 +92,17 @@
         if (country.currencies) {
 
           const claveCurrencies = Object.keys(country.currencies)[0];
-          optionsHtml += `<option value="${claveCurrencies}">${country.name.common}</option>`;
+          //optionsHtml += `<option value="${country.cca3}">${country.name.common}</option>`;
+
 
           agregarDato(country.name.common, claveCurrencies)
           console.log(country.name.common, claveCurrencies)
         }
-        console.log(country.name.common, "null")
+        else{
+          agregarDato(country.name.common, "null")
+          console.log(country.name.common, "null")
+        }
         */
-
       });
       document.getElementById("countries").innerHTML = optionsHtml;
 

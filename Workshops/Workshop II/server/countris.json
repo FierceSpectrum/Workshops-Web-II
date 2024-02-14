@@ -435,6 +435,10 @@
         "Name": "Finland",
         "Currency": "EUR"
     },
+    "Antarctica": {
+        "Name": "Antarctica",
+        "Currency": "null"
+    },
     "Kenya": {
         "Name": "Kenya",
         "Currency": "KES"
@@ -663,6 +667,10 @@
         "Name": "Madagascar",
         "Currency": "MGA"
     },
+    "Bouvet Island": {
+        "Name": "Bouvet Island",
+        "Currency": "null"
+    },
     "Hungary": {
         "Name": "Hungary",
         "Currency": "HUF"
@@ -882,6 +890,10 @@
     "Bahrain": {
         "Name": "Bahrain",
         "Currency": "BHD"
+    },
+    "Heard Island and McDonald Islands": {
+        "Name": "Heard Island and McDonald Islands",
+        "Currency": "null"
     },
     "Falkland Islands": {
         "Name": "Falkland Islands",
