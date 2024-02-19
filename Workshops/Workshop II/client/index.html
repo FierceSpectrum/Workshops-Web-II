@@ -15,23 +15,42 @@
 
     function getExchange() {
       //countrySelected()
-      getCountryData()
+      getCountryDataDolares()
+      getCountryDataEuros()
 
     }
 
-    function getCountryData() {
-      const selectedCountryCode = document.getElementById('countries').value;
+    function getCountryDataDolares() {
+      const selectedCountryCode = document.getElementById('countries').value.toLowerCase();
+      console.log()
       if (selectedCountryCode) {
         const ajaxRequest = new XMLHttpRequest(); //AJAX
         ajaxRequest.addEventListener("load", (e) => {
           const currenciesObject = JSON.parse(ajaxRequest.responseText);
-          const exchangeRate = currenciesObject[selectedCountryCode.toLowerCase()];
-          console.log(exchangeRate.usd);
-          document.getElementById('result').innerHTML = `Tipo de Cambio a Dolar: ${exchangeRate.usd}`;
+          const exchangeRate = currenciesObject['usd'];
+          console.log(exchangeRate);
+          document.getElementById('resultD').innerHTML = `Tipo de Cambio del dolar: ${exchangeRate[selectedCountryCode]}`;
 
         });
         ajaxRequest.addEventListener("error", () => { });
-        ajaxRequest.open("GET", `https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${selectedCountryCode.toLowerCase()}.json`);
+        ajaxRequest.open("GET", 'https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/usd.json');
+        ajaxRequest.send();
+      }
+    }
+    function getCountryDataEuros() {
+      const selectedCountryCode = document.getElementById('countries').value.toLowerCase();
+      console.log()
+      if (selectedCountryCode) {
+        const ajaxRequest = new XMLHttpRequest(); //AJAX
+        ajaxRequest.addEventListener("load", (e) => {
+          const currenciesObject = JSON.parse(ajaxRequest.responseText);
+          const exchangeRate = currenciesObject['eur'];
+          console.log(exchangeRate);
+          document.getElementById('resultE').innerHTML = `Tipo de Cambio del euro: ${exchangeRate[selectedCountryCode]}`;
+
+        });
+        ajaxRequest.addEventListener("error", () => { });
+        ajaxRequest.open("GET", 'https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur.json');
         ajaxRequest.send();
       }
     }
@@ -49,7 +68,8 @@
 <body>
   <button onclick="getExchange()">Tipo de Cambio</button>
   <h3>Results:</h3>
-  <div id="result"></div>
+  <div id="resultD"></div>
+  <div id="resultE"></div>
 
   <select name="countries" id="countries" onchange="getExchange()">
   </select>
@@ -110,7 +130,7 @@
       //console.log(jsonOutput);
     });
     ajaxRequest.addEventListener("error", () => { });
-    ajaxRequest.open("GET", "http://localhost:3001/listcountri");
+    ajaxRequest.open("GET", "http://localhost:3001/countries");
     ajaxRequest.send();
 
 

@@ -20,7 +20,7 @@ app.get('/tipocambio', function (req, res) {
     "TipoVentaEuros": "761.9"
   });
 });
-app.get('/listcountri', function (req, res) {
+app.get('/countries', function (req, res) {
   const filePath = path.join(__dirname, '/countris.json');
   res.sendFile(filePath, function (err) {
     if (err) {
